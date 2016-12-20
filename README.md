@@ -50,6 +50,7 @@ Several Python libraries are required. To install each, open up terminal and ent
 
 # Usage
 - The pure data patch must always be running (audio_engine.pd) with DSP turned on, make sure audio settings are set up so that your instrument's audio is routed into pure data.
+
 ### Learning
 - Before you can track notes, the program must 'learn' how each note on your instrument sounds. To do this, open up a terminal in this directory (i.e. the one containing this README) and run the 'learning server' by typing in
 
