@@ -122,3 +122,15 @@ python tracking_server.py --max_notes_per_chord 15
 
 # Notes
 This is an ongoing project and is by no means perfect. There is minor latency, and the pitch tracking is not always completely accurate (although as mentioned before, the notes guessed always make sense harmoincally with the real notes, so this could still be used in music production/performance scenarios). Other features that I would like to implement include adding an online machine learning routine so that the algorithm can learn even during the tracking server phase and get better and better over time.
+
+A full list of command line args and info on them can be found by running
+ 
+ ```
+python tracking_server.py --help
+```
+
+ ```
+python tracking_server.py --help
+```
+
+arguments here that were not discussed in the instructions are only necessary for more advanced usage (for example changing which ports to send OSC over), and in general should be ignored.
