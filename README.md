@@ -90,3 +90,34 @@ this will output a graph of harmonics learned for each note, here's mine:
 You should see nice logarithmic curves like in the example above (the Y axis corresponds to each note learned on the instrument--in order--which is why we see the logarithmic curve). Note if you used a non-default name for the data file you have to go into the graph.py script and change the line DATAFILE accordingly.
 
 ### Tracking
+
+- Now run the tracking server (you often have to disconnect pure data and reconnect pure data from OSC--click disconnect right below connect in the redbox of the PD patch and then click connect again)
+
+```
+python tracking_server.py
+```
+
+- By default the MIDI bus is selected to be IAC Bus Driver 1, so make sure this is running. Alternatively you can specify a different MIDI port with the command line arg --midiport, also if you are using a nondefault data file name, specify it in the same way as before. So for example:
+
+ ```
+ python tracking_server.py --datafilename 'altdata.p' --midiport 'Daemon Output 0'
+ ```
+ 
+If your not sure what name the midi port should be entered as, you can simply run the tracking_server and it will fail and output a message that contains all the midi ports on your computer as they should be entered as a commandline arg. Something like this should be printed:
+ 
+ ```
+To run with a different midi port, rerun this program with the command lineargument '--midi_port 'port name goes here'
+
+Where 'port name goes here' corresponds to one of the following recognized midi ports:
+
+['Daemon Output 0', 'Daemon Output 1', 'Daemon Output 2', 'Daemon Output 3', 'Daemon Output 4', 'Daemon Output 5', 'Daemon Output 6', 'Daemon Output 7', 'IAC Driver Bus 1', 'IAC Driver IAC Bus 2']
+ ```
+ 
+ - One last command line argument that can be entered here is 'max_notes_per_chord', this defaults to 6. Setting it as a higher number can produce interesting results as it can often sway the algorithm into guessing notes that aren't actually there, yet these notes almost always harmonically make sense with the true notes being played (see the ending bit of the demo video for an example).
+ 
+ ```
+python tracking_server.py --max_notes_per_chord 15
+```
+
+# Notes
+This is an ongoing project and is by no means perfect. There is minor latency, and the pitch tracking is not always completely accurate (although as mentioned before, the notes guessed always make sense harmoincally with the real notes, so this could still be used in music production/performance scenarios). Other features that I would like to implement include adding an online machine learning routine so that the algorithm can learn even during the tracking server phase and get better and better over time.
