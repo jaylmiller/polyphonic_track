@@ -126,7 +126,7 @@ This is an ongoing project and is by no means perfect. There is minor latency, a
 A full list of command line args and info on them can be found by running
  
  ```
-python tracking_server.py --help
+python learning_server.py --help
 ```
 
  ```
